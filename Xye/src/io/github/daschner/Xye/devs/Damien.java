@@ -12,7 +12,6 @@ public class Damien
 		
 	}
 	
-	
 	public static void postInitialization()
 	{
 		
