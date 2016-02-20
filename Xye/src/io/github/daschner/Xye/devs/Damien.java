@@ -4,6 +4,8 @@ import io.github.daschner.Xye.data.types.Date;
 import io.github.daschner.Xye.data.types.Month;
 import io.github.daschner.Xye.data.url.UrlHandler;
 
+import java.net.URL;
+
 public class Damien 
 {
 	
@@ -25,7 +27,29 @@ public class Damien
 		
 		System.out.println("Starting PP Initialization phase.");
 		
-		System.out.println(new UrlHandler().getStockUrlForDate("IXIC", new Date(1, Month.DECEMBER, 2015)));
+		UrlHandler handler = new UrlHandler();
+		
+		handler.createFolder("Stocks\\IXIC");
+		
+		for(int i = 0; i < 31; i++) {
+			
+		Date date = new Date(i+1, Month.DECEMBER, 2015);
+		
+		URL url = handler.getStockUrlForDate("IXIC", date);
+		
+		if(handler.validateURL(url)) {
+			
+			handler.downloadFileFromURL(url, "Stocks\\IXIC\\" + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv");
+			
+		}
+		else
+		{
+			
+			
+			
+		}
+		
+		}
 		
 		System.out.println("Ending PP Initialization phase.");
 		

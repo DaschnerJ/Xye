@@ -2,10 +2,19 @@ package io.github.daschner.Xye.data.url;
 
 import io.github.daschner.Xye.data.types.Date;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Path;
+
 /**
- * 
  * @author PoisonedPorkchop
- *
  */
 
 public class UrlHandler {
@@ -49,7 +58,7 @@ public class UrlHandler {
 	 * @return URL for this stock at the specified date and time.
 	 */
 	
-	public String getStockUrlForDate(String stockName, Date date) {
+	public URL getStockUrlForDate(String stockName, Date date) {
 		
 		String firstMonth = "" + date.getMonth().ordinal();
 		
@@ -59,7 +68,156 @@ public class UrlHandler {
 			
 		}
 		
-		return "http://real-chart.finance.yahoo.com/table.csv?s=%5E" + stockName + "&a=" + firstMonth + "&b=" + date.getDay() + "&c=" + date.getYear() + "&d=" + firstMonth + "&e=" + date.getDay() + "&f=" + date.getYear() + "&g=d&ignore=.csv";
+		try {
+			
+			return new URL("http://real-chart.finance.yahoo.com/table.csv?s=%5E" + stockName + "&a=" + firstMonth + "&b=" + date.getDay() + "&c=" + date.getYear() + "&d=" + firstMonth + "&e=" + date.getDay() + "&f=" + date.getYear() + "&g=d&ignore=.csv");
+			
+		} catch (MalformedURLException e) {
+			
+			return null;
+			
+		}
+		
+	}
+	
+	/**
+	 * Use this method to validate if a URL is online or working.
+	 * 
+	 * @param url - The URL to validate
+	 * @return True if the URL is valid, false otherwise.
+	 */
+	
+	public boolean validateURL(URL url) {
+		
+		HttpURLConnection website = null;
+		
+		try {
+			
+			website = (HttpURLConnection) url.openConnection();
+			
+			website.setConnectTimeout(10000);
+			
+			website.setRequestMethod("GET");
+			
+			website.connect();
+			
+			if(website.getResponseCode() == HttpURLConnection.HTTP_OK) {
+				
+				return true;
+				
+			}
+			else if(website.getResponseCode() == HttpURLConnection.HTTP_OK) {
+				
+				return false;
+				
+			}
+			else {
+				
+				return false;
+				
+			}
+			
+		} catch (Exception e) {
+			
+			return false;
+			
+		} finally {
+			
+			if (website != null) {
+				
+				website.disconnect();
+				
+			}
+
+		}
+		
+	}
+	
+	/**
+	 * Downloads a file from a URL.
+	 * 
+	 * @param url - The URL to download from.
+	 * @param fileName - Path in Xye folder to put the new file.
+	 * @return Path to the newly downloaded file.
+	 */
+	
+	public Path downloadFileFromURL(URL url, String fileName) {
+		
+		ReadableByteChannel rbc = null;
+		
+		try {
+			
+			rbc = Channels.newChannel(url.openStream());
+			
+		} catch (IOException e1) {
+			
+			System.out.println("ERROR: Byte Channel could not be initialized!");
+			
+		}
+		
+		FileOutputStream fos = null;
+		
+		try {
+			
+			this.createFolder("");
+			
+			fos = new FileOutputStream("C:\\Xye\\" + fileName);
+			
+			try {
+				
+				fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+				
+				try {
+					
+					fos.close();
+					
+				} catch (IOException e) {
+					
+					System.out.println("ERROR: FileStream could not be closed!");
+					
+				}
+				
+			} catch (IOException e) {
+				
+				System.out.println("ERROR: Transfer of bytes failed!");
+				
+			}
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+			
+			System.out.println("ERROR: FileStream could not be created!");
+			
+		}
+		
+		return null;
+		
+	}
+	
+	/**
+	 * Creates a folder in the given location
+	 * 
+	 * @param path - Path at which to create the folder.
+	 */
+	
+	public boolean createFolder(String path) {
+		
+		File f = new File("C:\\Xye\\" + path);
+		
+		try {
+			
+			f.mkdirs();
+			
+			return true;
+			
+		} catch (Exception e) {
+			
+			System.out.println("ERROR: Folder could not be created!");
+			
+			return false;
+			
+		}
 		
 	}
 	
