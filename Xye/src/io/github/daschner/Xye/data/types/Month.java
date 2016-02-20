@@ -1,5 +1,7 @@
 package io.github.daschner.Xye.data.types;
-
+/**
+ * @author Mr. Daschner
+ */
 public enum Month {
 	
 	JANUARY(0), FEBRUARY(1), MARCH(2), 
