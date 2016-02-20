@@ -1,5 +1,9 @@
 package io.github.daschner.Xye.devs;
 
+import io.github.daschner.Xye.data.types.Date;
+import io.github.daschner.Xye.data.types.Month;
+import io.github.daschner.Xye.data.url.UrlHandler;
+
 public class Damien 
 {
 	
@@ -8,23 +12,31 @@ public class Damien
 	//Libraries and APIs
 	public static void preInitialization()
 	{
-		 
-		Damien.x = 0;
+		
+		System.out.println("Starting PP PreInitialization phase.");
+		
+		System.out.println("Ending PP PreInitialization phase.");
 		
 	}
 	
 	
 	public static void Initialization()
-	{
+	{	
 		
-		System.out.print(x);
+		System.out.println("Starting PP Initialization phase.");
+		
+		System.out.println(new UrlHandler().getStockUrlForDate("IXIC", new Date(1, Month.DECEMBER, 2015)));
+		
+		System.out.println("Ending PP Initialization phase.");
 		
 	}
 	
 	public static void postInitialization()
 	{
 		
+		System.out.println("Starting PP PostInitialization phase.");
 		
+		System.out.println("Ending PP PostInitialization phase.");
 		
 	}
 
