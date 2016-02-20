@@ -9,7 +9,7 @@ public class Damien
 	public static void preInitialization()
 	{
 		
-		int x = 0;
+		Damien.x = 0;
 		
 	}
 	
