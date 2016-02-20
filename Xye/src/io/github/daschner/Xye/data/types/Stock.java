@@ -92,7 +92,6 @@ public class Stock
 		this.indiceTable = indiceTable;
 		return true;
 	}
-	
-	
+
 
 }
