@@ -11,7 +11,7 @@ public class Trade
 	/**
 	 * Date of the trade.
 	 */
-	private String date;
+	private Date date;
 	/**
 	 * The values for the open, high, low, close, and adjClose.
 	 */
@@ -32,7 +32,7 @@ public class Trade
 	 * @param volume The volume amount. Has to be a long due to large volumes.
 	 * @param adjClose The adjClose amount.
 	 */
-	public Trade(String stockKey, String date, double open, double high, double low, double close, long volume, double adjClose)
+	public Trade(String stockKey, Date date, double open, double high, double low, double close, long volume, double adjClose)
 	{
 		this.stockKey = stockKey;
 		this.date = date;
@@ -55,7 +55,7 @@ public class Trade
 	 * Retrieves the date of the trade.
 	 * @return The date.
 	 */
-	public String getDate()
+	public Date getDate()
 	{
 		return date;
 	}
@@ -122,7 +122,7 @@ public class Trade
 	 * @param date The date of the trade to be set.
 	 * @return Returns true if the value was successfully set.
 	 */
-	public boolean setDate(String date)
+	public boolean setDate(Date date)
 	{
 		this.date = date;
 		return true;
