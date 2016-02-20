@@ -19,7 +19,7 @@ public class UrlHandler {
 	 * @return URL for this stock at the specified dates and time.
 	 */
 	
-	public String getStockUrlForDates(String stockName, Date dateStart, Date dateEnd) {
+	public String getStockUrlForDate(String stockName, Date dateStart, Date dateEnd) {
 		
 		String firstMonth = "" + dateStart.getMonth().ordinal();
 		
