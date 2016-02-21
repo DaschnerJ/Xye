@@ -18,7 +18,7 @@ public class basic
 	public double evaluateString(String problem) throws ScriptException
 	{
 		
-		return (Double)Daschner.scriptEngine.eval(problem);
+		return (Double) Daschner.scriptEngine.eval(problem);
 		
 	}
 

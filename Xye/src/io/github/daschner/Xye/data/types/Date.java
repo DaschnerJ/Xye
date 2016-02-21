@@ -119,5 +119,58 @@ public class Date
 		
 	}
 	
+	/**
+	 * Gets the current day of the year.
+	 * 
+	 * @return The day it is today.
+	 */
+	
+	public static int getCurrentDay() {
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd");
+		
+		Calendar cal = Calendar.getInstance();
+		
+		String date = dateFormat.format(cal.getTime());
+		
+		return Integer.parseInt(date);
+		
+	}
+	
+	/**
+	 * Gets the current Month of the year.
+	 * 
+	 * @return The month it is now.
+	 */
+	
+	public static Month getCurrentMonth() {
+		
+		DateFormat dateFormat = new SimpleDateFormat("MM");
+		
+		Calendar cal = Calendar.getInstance();
+		
+		String date = dateFormat.format(cal.getTime());
+		
+		return Month.values()[Integer.parseInt(date) - 1];
+		
+	}
+	
+	/**
+	 * Gets the current year.
+	 * 
+	 * @return The year it is now.
+	 */
+	
+	public static int getCurrentYear() {
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy");
+		
+		Calendar cal = Calendar.getInstance();
+		
+		String date = dateFormat.format(cal.getTime());
+		
+		return Integer.parseInt(date);
+		
+	}
 
 }
