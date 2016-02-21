@@ -285,7 +285,8 @@ public class Stock
 					}
 				}
 			}
-			return false;
+			indiceTable = newIndiceTable;
+			return true;
 		}
 	}
 	
