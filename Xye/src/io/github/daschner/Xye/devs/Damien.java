@@ -1,11 +1,8 @@
 package io.github.daschner.Xye.devs;
 
 import io.github.daschner.Xye.data.types.Date;
-import io.github.daschner.Xye.data.types.Month;
 import io.github.daschner.Xye.data.url.UrlHandler;
 import io.github.poisonedporkchop.data.files.FileHandler;
-
-import java.net.URL;
 
 public class Damien 
 {
@@ -16,53 +13,38 @@ public class Damien
 	public static void preInitialization()
 	{
 		
-		System.out.println("Starting PP PreInitialization phase.");
+		System.out.println("Starting Damien's PreInitialization phase.");
 		
-		System.out.println("Ending PP PreInitialization phase.");
+		System.out.println("Ending Damien's PreInitialization phase.");
 		
 	}
 	
 	public static void Initialization()
 	{	
 		
-		System.out.println("Starting PP Initialization phase.");
+		System.out.println("Starting Damien's Initialization phase.");
+		
+		@SuppressWarnings("unused")
+		FileHandler fileHandler = new FileHandler();
 		
 		UrlHandler urlHandler = new UrlHandler();
 		
-		FileHandler fileHandler = new FileHandler();
+		Date date = Date.getCurrentDate();
 		
-		for(int i = 0; i < 31; i++) {
+		date.setDay(date.getDay() - 3);
 		
-		Date date = new Date(i+1, Month.DECEMBER, 2015);
+		urlHandler.getAndProcessFromUrl("MSFT");
 		
-		URL url = urlHandler.getStockUrlForDate("IXIC", date);
-		
-		if(urlHandler.validateURL(url)) {
-			
-			urlHandler.downloadFileFromURL(url, "Downloads\\Stocks\\IXIC", (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv");
-			
-		}
-		else
-		{
-			
-			System.out.println("WARNING: Could not download '" + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + "' as it was not available.");
-			
-		}
-		
-		}
-		
-		fileHandler.processTrade("Downloads\\Stocks\\IXIC", "Data\\Stocks\\IXIC") ;
-		
-		System.out.println("Ending PP Initialization phase.");
+		System.out.println("Ending Damien's Initialization phase.");
 		
 	}
 	
 	public static void postInitialization()
 	{
 		
-		System.out.println("Starting PP PostInitialization phase.");
+		System.out.println("Starting Damien's PostInitialization phase.");
 		
-		System.out.println("Ending PP PostInitialization phase.");
+		System.out.println("Ending Damien's PostInitialization phase.");
 		
 	}
 

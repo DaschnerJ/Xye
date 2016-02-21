@@ -3,6 +3,7 @@ package io.github.daschner.Xye.data.url;
 import io.github.daschner.Xye.data.types.Date;
 import io.github.poisonedporkchop.data.files.FileHandler;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class UrlHandler {
 	 * @return URL for this stock at the specified dates and time.
 	 */
 	
-	public String getStockUrlForDate(String stockName, Date dateStart, Date dateEnd) {
+	public URL getStockUrlForDate(String stockName, Date dateStart, Date dateEnd) {
 		
 		String firstMonth = "" + dateStart.getMonth().ordinal();
 		
@@ -45,7 +46,15 @@ public class UrlHandler {
 			
 		}
 		
-		return "http://real-chart.finance.yahoo.com/table.csv?s=%5E" + stockName + "&a=" + firstMonth + "&b=" + dateStart.getDay() + "&c=" + dateStart.getYear() + "&d=" + secondMonth + "&e=" + dateEnd.getDay() + "&f=" + dateEnd.getYear() + "&g=d&ignore=.csv";
+		try {
+			
+			return new URL("http://real-chart.finance.yahoo.com/table.csv?s=" + stockName + "&a=" + firstMonth + "&b=" + dateStart.getDay() + "&c=" + dateStart.getYear() + "&d=" + secondMonth + "&e=" + dateEnd.getDay() + "&f=" + dateEnd.getYear() + "&g=d&ignore=.csv");
+			
+		} catch (MalformedURLException e) {
+			
+			return null;
+			
+		}
 		
 	}
 	
@@ -69,7 +78,7 @@ public class UrlHandler {
 		
 		try {
 			
-			return new URL("http://real-chart.finance.yahoo.com/table.csv?s=%5E" + stockName + "&a=" + firstMonth + "&b=" + date.getDay() + "&c=" + date.getYear() + "&d=" + firstMonth + "&e=" + date.getDay() + "&f=" + date.getYear() + "&g=d&ignore=.csv");
+			return new URL("http://real-chart.finance.yahoo.com/table.csv?s=" + stockName + "&a=" + firstMonth + "&b=" + date.getDay() + "&c=" + date.getYear() + "&d=" + firstMonth + "&e=" + date.getDay() + "&f=" + date.getYear() + "&g=d&ignore=.csv");
 			
 		} catch (MalformedURLException e) {
 			
@@ -137,6 +146,7 @@ public class UrlHandler {
 	 * 
 	 * @param url - The URL to download from.
 	 * @param path - Path in Xye folder to put the new file.
+	 * @param fileName - Name of new file.
 	 * @return Path to the newly downloaded file.
 	 */
 	
@@ -170,6 +180,14 @@ public class UrlHandler {
 					
 					fos.close();
 					
+					File file = new File("C:\\Xye\\" + path + "\\" + fileName);
+					
+					if(file.length() == 0) {
+						
+						file.delete();
+						
+					}
+					
 				} catch (IOException e) {
 					
 					System.out.println("ERROR: FileStream could not be closed!");
@@ -184,13 +202,81 @@ public class UrlHandler {
 			
 		} catch (FileNotFoundException e) {
 			
-			e.printStackTrace();
-			
 			System.out.println("ERROR: FileStream could not be created!");
 			
 		}
 		
 		return (path + "\\" + fileName);
+		
+	}
+	
+	public void getAndProcessFromUrl(String stockName, Date date1, Date date2) {
+		
+		FileHandler handler = new FileHandler();
+		
+		URL url = getStockUrlForDate(stockName, date1, date2);
+		
+		if(validateURL(url)) {
+			
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".csv");
+			
+		}
+		else
+		{
+			
+			System.out.println("WARNING: Could not download '" + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + "' as it was not available.");
+			
+		}
+		
+		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".csv") ;
+		
+	}
+	
+	public void getAndProcessFromUrl(String stockName, Date date) {
+		
+		FileHandler handler = new FileHandler();
+		
+		URL url = getStockUrlForDate(stockName, date);
+		
+		if(validateURL(url)) {
+			
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv");
+			
+		}
+		else
+		{
+			
+			System.out.println("WARNING: Could not download '" + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + "' as it was not available.");
+			
+		}
+		
+		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv") ;
+		
+	}
+	
+	public void getAndProcessFromUrl(String stockName) {
+		
+		FileHandler fileHandler = new FileHandler();
+		
+		Date date = Date.getCurrentDate();
+		
+		date.setDay(32);
+		
+		URL url = getStockUrlForDate(stockName, date);
+		
+		if(validateURL(url)) {
+			
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + "All" + ".csv");
+			
+		}
+		else
+		{
+			
+			System.out.println("WARNING: Could not download '" + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + "' as it was not available.");
+			
+		}
+		
+		fileHandler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + "All" + ".csv") ;
 		
 	}
 	

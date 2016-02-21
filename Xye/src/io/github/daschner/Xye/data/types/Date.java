@@ -1,4 +1,9 @@
 package io.github.daschner.Xye.data.types;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * @author Mr. Daschner
  */
@@ -77,6 +82,18 @@ public class Date
 	{
 		this.year = year;
 		return true;
+	}
+	
+	public static Date getCurrentDate() {
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Calendar cal = Calendar.getInstance();
+		
+		String date = dateFormat.format(cal.getTime());
+		
+		return new Date(Integer.parseInt(date.substring(0, 2)), Month.values()[Integer.parseInt(date.substring(3, 5)) - 1], Integer.parseInt(date.substring(6, 10)));
+		
 	}
 	
 

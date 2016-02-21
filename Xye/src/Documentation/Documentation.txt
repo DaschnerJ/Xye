@@ -1,2 +1,3 @@
 Justin Daschner
 Damien
+	Fake Link: http://real-chart.finance.yahoo.com/table.csv?s=<STOCK ID>&a=<MONTH START>&b=<DAY START>&c=<YEAR START>&d=<MONTH END>&e=<DAY END>&f=<YEAR END>&g=d&ignore=.csv"
