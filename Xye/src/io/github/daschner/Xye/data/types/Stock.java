@@ -8,6 +8,8 @@ public class Stock
 {
 	private String stockKey;
 	
+	private boolean preDate = false;
+	
 	private HashMap<Date, Trade> dateTable = new HashMap<Date, Trade>();
 	private HashMap<Integer, Trade> indiceTable = new HashMap<Integer, Trade>();
 	
@@ -195,6 +197,7 @@ public class Stock
 		{
 			if(indiceTable.size() > 1)
 			{
+				preDate = true;
 				return indiceTable.get(index++);
 			}
 			else
@@ -214,5 +217,47 @@ public class Stock
 		}
 	}
 
-
+	public boolean deleteTrade(Trade trade)
+	{
+		if(trade != null)
+		{
+			if(dateTable.containsKey(trade) && indiceTable.containsKey(trade))
+			{
+				int index = getTradeIndex(trade);
+				Date date = getTradeDate(trade);
+				
+				dateTable.remove(date);
+				indiceTable.remove(index);
+				
+				return true;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+	
+	public boolean deleteTrade(Date date)
+	{
+		deleteTrade(dateTable.get(date));
+		return true;
+	}
+	
+	public boolean deleteTrade(Integer index)
+	{
+		deleteTrade(indiceTable.get(index));
+		return true;
+	}
+	
+	public boolean reformatTables()
+	{
+		if(indiceTable.isEmpty() || dateTable.isEmpty())
+			return true;
+		else
+		{
+			return false;
+		}
+	}
+	
 }
