@@ -14,7 +14,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 /**
- * @author PoisonedPorkchop
+ * @author Damien Claessen
  */
 
 public class UrlHandler {
@@ -210,6 +210,14 @@ public class UrlHandler {
 		
 	}
 	
+	/**
+	 * Automatically check for, get, and process a stock.
+	 * 
+	 * @param stockName - The stock identifier for this stock you are trying.
+	 * @param date1 - The date to start getting history from.
+	 * @param date2 - The date to end getting history from.
+	 */
+	
 	public void getAndProcessFromUrl(String stockName, Date date1, Date date2) {
 		
 		FileHandler handler = new FileHandler();
@@ -232,6 +240,13 @@ public class UrlHandler {
 		
 	}
 	
+	/**
+	 * Automatically check for, get, and process a stock.
+	 * 
+	 * @param stockName - The stock identifier for this stock you are trying.
+	 * @param date - The date for which to get data on.
+	 */
+	
 	public void getAndProcessFromUrl(String stockName, Date date) {
 		
 		FileHandler handler = new FileHandler();
@@ -253,6 +268,12 @@ public class UrlHandler {
 		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv") ;
 		
 	}
+	
+	/**
+	 * Automatically check for, get, and process all history of a stock.
+	 * 
+	 * @param stockName - The stock identifier for this stock you are trying.
+	 */
 	
 	public void getAndProcessFromUrl(String stockName) {
 		
