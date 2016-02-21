@@ -154,7 +154,7 @@ public class Stock
 					int index = getTradeIndex(trade);
 					Date date = getTradeDate(trade);
 					
-					dateTable.put(date, duplicate);
+					dateTable.remove(date);
 					indiceTable.put(index, duplicate);
 					
 					return true;
@@ -256,6 +256,35 @@ public class Stock
 			return true;
 		else
 		{
+			HashMap<Integer, Trade> newIndiceTable = new HashMap<Integer, Trade>();
+			int size = indiceTable.size();
+			int counter = 0;
+			for(int i = 0; i < size; i++)
+			{
+				if(i + 1 < size)
+				{
+					if(indiceTable.get(i).equals(indiceTable.get(i+1)))
+					{
+						if(preDate)
+						{
+							newIndiceTable.put(counter, indiceTable.get(i+1));
+							i++;
+							counter++;
+						}
+						else
+						{
+							newIndiceTable.put(counter, indiceTable.get(i));
+							i++;
+							counter++;
+						}
+					}
+					else
+					{
+						newIndiceTable.put(counter, indiceTable.get(i));
+						counter++;
+					}
+				}
+			}
 			return false;
 		}
 	}
