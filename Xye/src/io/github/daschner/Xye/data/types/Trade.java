@@ -5,7 +5,7 @@ package io.github.daschner.Xye.data.types;
 public class Trade 
 {
 	/**
-	 * Stock key, the three digit identifier.
+	 * Stock key, the three-four digit identifier.
 	 */
 	private String stockKey;
 	/**

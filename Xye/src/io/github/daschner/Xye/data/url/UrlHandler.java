@@ -1,8 +1,8 @@
 package io.github.daschner.Xye.data.url;
 
 import io.github.daschner.Xye.data.types.Date;
+import io.github.poisonedporkchop.data.files.FileHandler;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,7 +11,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.file.Path;
 
 /**
  * @author PoisonedPorkchop
@@ -137,11 +136,11 @@ public class UrlHandler {
 	 * Downloads a file from a URL.
 	 * 
 	 * @param url - The URL to download from.
-	 * @param fileName - Path in Xye folder to put the new file.
+	 * @param path - Path in Xye folder to put the new file.
 	 * @return Path to the newly downloaded file.
 	 */
 	
-	public Path downloadFileFromURL(URL url, String fileName) {
+	public String downloadFileFromURL(URL url, String path, String fileName) {
 		
 		ReadableByteChannel rbc = null;
 		
@@ -159,9 +158,9 @@ public class UrlHandler {
 		
 		try {
 			
-			this.createFolder("");
+			new FileHandler().createFolder(path);
 			
-			fos = new FileOutputStream("C:\\Xye\\" + fileName);
+			fos = new FileOutputStream("C:\\Xye\\" + path + "\\" + fileName);
 			
 			try {
 				
@@ -191,33 +190,7 @@ public class UrlHandler {
 			
 		}
 		
-		return null;
-		
-	}
-	
-	/**
-	 * Creates a folder in the given location
-	 * 
-	 * @param path - Path at which to create the folder.
-	 */
-	
-	public boolean createFolder(String path) {
-		
-		File f = new File("C:\\Xye\\" + path);
-		
-		try {
-			
-			f.mkdirs();
-			
-			return true;
-			
-		} catch (Exception e) {
-			
-			System.out.println("ERROR: Folder could not be created!");
-			
-			return false;
-			
-		}
+		return (path + "\\" + fileName);
 		
 	}
 	
