@@ -1,11 +1,25 @@
 package io.github.daschner.Xye.devs;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 public class Daschner 
 {
+	public static ScriptEngineManager scriptEngineManager;
+	public static ScriptEngine scriptEngine;
 	public static void preInitialization()
 	{
+		
 		System.out.println("Mr. Daschner's preinitialization has started.");
 		
+		System.out.println("Starting up java script engine manager...");
+		scriptEngineManager = new ScriptEngineManager();
+		System.out.println("Started successfully.");
+		
+		System.out.println("Starting up java script engine...");
+	    scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
+	    System.out.println("Started successfully.");
+	    
 		System.out.println("Mr. Daschner's preinitialization has completed.");
 	}
 	
