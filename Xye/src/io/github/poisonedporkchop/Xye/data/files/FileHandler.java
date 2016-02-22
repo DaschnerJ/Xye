@@ -1,4 +1,7 @@
-package io.github.poisonedporkchop.data.files;
+package io.github.poisonedporkchop.Xye.data.files;
+
+import io.github.daschner.Xye.data.types.Stock;
+import io.github.daschner.Xye.data.types.Trade;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Damien Claessen
@@ -249,6 +253,137 @@ public class FileHandler {
 			return false;
 			
 		}
+		
+	}
+	
+	/**
+	 * Takes a stock and converts it into a file
+	 * 
+	 * @param stock
+	 * @param filePath
+	 * @param fileName
+	 * @return
+	 */
+	
+	public boolean createFileFromStock(Stock stock, String filePath, String fileName) {
+		
+		this.createFolder(filePath);
+		
+		File file = new File("C:\\Xye\\" + filePath + "\\" + fileName);
+		
+		if(!file.isFile()) {
+			
+			try {
+				
+				file.createNewFile();
+				
+			} catch (IOException e2) {
+				
+				System.out.println("ERROR: File could not be created.");
+				
+				return false;
+				
+			}
+			
+		}
+		
+		List<Trade> trades = stock.getListOfTrades();
+			
+			FileWriter fileWriter = null;
+				
+				try {
+					
+					fileWriter = new FileWriter(file);
+					
+				} catch (IOException e1) {
+					
+					System.out.println("ERROR: A problem with the file write has occured!");
+					
+					return false;
+					
+				}
+				
+				BufferedWriter writer = new BufferedWriter(fileWriter);
+				
+				for(int i = 0; i < trades.size(); i++) {
+					
+					if(i != 0) {
+						
+						try {
+							
+							writer.newLine();
+							
+						} catch (IOException e) {
+							
+							System.out.println("ERROR: A problem with file write has occured!");
+							
+						}
+						
+					}
+					
+					Trade trade = trades.get(i);
+					
+					try {
+						
+						writer.write(trade.getDate().getYear() + "-");
+						
+						if(trade.getDate().getMonth().ordinal()+1 < 10) {
+							
+							writer.write(0 + "" + (trade.getDate().getMonth().ordinal() + 1) + "-");
+							
+						}
+						else
+						{
+							
+							writer.write((trade.getDate().getMonth().ordinal() + 1) + "-");
+							
+						}
+						
+						if(trade.getDate().getDay() < 10) {
+							
+							writer.write(0 + "" + trade.getDate().getDay() + ",");
+							
+						}
+						else
+						{
+							
+							writer.write(trade.getDate().getDay() + ",");
+							
+						}
+						
+						writer.write(trade.getOpen() + ",");
+						
+						writer.write(trade.getHigh() + ",");
+						
+						writer.write(trade.getLow() + ",");
+						
+						writer.write(trade.getClose() + ",");
+						
+						writer.write(trade.getVolume() + ",");
+						
+						writer.write(trade.adjClose() + "");
+						
+					} catch (IOException e) {
+						
+						System.out.println("ERROR: A problem with file write has occured!");
+						
+					}
+					
+				}
+				
+				try {
+					
+					writer.close();
+					
+				} catch (IOException e) {
+					
+					System.out.println("ERROR: A problem with file write has occured!");
+					
+					return false;
+					
+				}
+				
+				return true;
 		
 	}
 	

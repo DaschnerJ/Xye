@@ -1,6 +1,11 @@
 package io.github.daschner.Xye.data.types;
 
+import io.github.poisonedporkchop.Xye.data.functions.DataManager;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 /**
  * @author Mr. Daschner
  */
@@ -256,38 +261,87 @@ public class Stock
 			return true;
 		else
 		{
+			
 			HashMap<Integer, Trade> newIndiceTable = new HashMap<Integer, Trade>();
+			
 			int size = indiceTable.size();
+			
 			int counter = 0;
+			
 			for(int i = 0; i < size; i++)
 			{
+				
 				if(i + 1 < size)
 				{
+					
 					if(indiceTable.get(i).equals(indiceTable.get(i+1)))
 					{
+						
 						if(preDate)
 						{
+							
 							newIndiceTable.put(counter, indiceTable.get(i+1));
+							
 							i++;
+							
 							counter++;
+							
 						}
 						else
 						{
+							
 							newIndiceTable.put(counter, indiceTable.get(i));
+							
 							i++;
+							
 							counter++;
+							
 						}
+						
 					}
 					else
 					{
+						
 						newIndiceTable.put(counter, indiceTable.get(i));
+						
 						counter++;
+						
 					}
+					
 				}
+				
 			}
+			
 			indiceTable = newIndiceTable;
+			
 			return true;
 		}
+	}
+	
+	public List<Trade> getListOfTrades() {
+		
+		List<Trade> trades = new ArrayList<>();
+		
+		DataManager dataManager = new DataManager();
+		
+		for(Entry<Date, Trade> entry : this.dateTable.entrySet()) {
+			
+			trades.add(entry.getValue());
+			
+		}
+		
+		return dataManager.sortTradesByDate(trades);
+		
+	}
+	
+	public void putListOfTrades(List<Trade> trades) {
+		
+		for(Trade trade : trades) {
+			
+			this.addDateTrade(trade.getDate(), trade);
+			
+		}
+		
 	}
 	
 }

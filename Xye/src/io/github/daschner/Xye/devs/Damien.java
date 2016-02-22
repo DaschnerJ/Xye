@@ -1,12 +1,9 @@
 package io.github.daschner.Xye.devs;
 
-import java.util.List;
-
-import io.github.daschner.Xye.data.types.Date;
-import io.github.daschner.Xye.data.types.Trade;
+import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.data.url.UrlHandler;
-import io.github.poisonedporkchop.data.files.FileHandler;
-import io.github.poisonedporkchop.data.files.FileLoader;
+import io.github.poisonedporkchop.Xye.data.files.FileHandler;
+import io.github.poisonedporkchop.Xye.data.files.FileLoader;
 
 public class Damien 
 {
@@ -28,22 +25,17 @@ public class Damien
 		
 		System.out.println("Starting Damien's Initialization phase.");
 		
-		@SuppressWarnings("unused")
 		FileHandler fileHandler = new FileHandler();
 		
 		UrlHandler urlHandler = new UrlHandler();
 		
 		FileLoader fileLoader = new FileLoader();
 		
-		Date date = Date.getCurrentDate();
-		
-		date.setDay(date.getDay() - 3);
-		
 		urlHandler.getAndProcessFromUrl("MSFT");
 		
-		List<Trade> trades = fileLoader.getTradesFromFile("Data\\Stocks\\MSFT", "MSFT All.csv", "MSFT");
+		Stock stock = fileLoader.getStockFromFile("Data\\Stocks\\MSFT", "MSFT All.csv", "MSFT");
 		
-		System.out.println("There was " + trades.size() + " trades in the read file.");
+		fileHandler.createFileFromStock(stock, "Test\\File", "test.csv");
 		
 		System.out.println("Ending Damien's Initialization phase.");
 		

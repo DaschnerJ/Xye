@@ -1,4 +1,4 @@
-package io.github.poisonedporkchop.data.files;
+package io.github.poisonedporkchop.Xye.data.files;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

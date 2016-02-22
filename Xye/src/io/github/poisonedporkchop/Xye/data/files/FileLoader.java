@@ -1,9 +1,10 @@
-package io.github.poisonedporkchop.data.files;
+package io.github.poisonedporkchop.Xye.data.files;
 
 import io.github.daschner.Xye.data.types.Date;
 import io.github.daschner.Xye.data.types.Month;
 import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.data.types.Trade;
+import io.github.poisonedporkchop.Xye.data.functions.DataManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -127,9 +128,22 @@ public class FileLoader {
 		
 	}
 	
+	/**
+	 * Creates a Stock from a file.
+	 * 
+	 * @param filePath - Path of the file to get the Stock from.
+	 * @param fileName - Name of the file to get the Stock from.
+	 * @param stockID - Identifier of the stock.
+	 * @return The Stock from the file.
+	 */
+	
 	public Stock getStockFromFile(String filePath, String fileName, String stockID) {
 		
 		Stock stock = new Stock(stockID);
+		
+		List<Trade> trades = this.getTradesFromFile(filePath, fileName, stockID);
+		
+		stock.putListOfTrades(trades);
 		
 		return stock;
 		
