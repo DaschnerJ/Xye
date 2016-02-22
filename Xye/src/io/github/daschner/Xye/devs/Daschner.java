@@ -59,7 +59,7 @@ public class Daschner
 			length--;
 		}
 		
-		return reversed;
+		return reversed; 
 	}
 
 }
