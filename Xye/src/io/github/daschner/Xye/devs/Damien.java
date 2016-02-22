@@ -1,6 +1,5 @@
 package io.github.daschner.Xye.devs;
 
-import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.data.url.UrlHandler;
 import io.github.poisonedporkchop.Xye.data.files.FileHandler;
 import io.github.poisonedporkchop.Xye.data.files.FileLoader;
