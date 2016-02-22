@@ -11,8 +11,10 @@ import io.github.daschner.Xye.data.types.Trade;
  */
 public class Daschner 
 {
+	
 	public static ScriptEngineManager scriptEngineManager;
 	public static ScriptEngine scriptEngine;
+	
 	public static void preInitialization()
 	{
 		
