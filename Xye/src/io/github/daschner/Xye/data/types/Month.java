@@ -1,4 +1,6 @@
 package io.github.daschner.Xye.data.types;
+
+
 /**
  * @author Mr. Daschner
  */

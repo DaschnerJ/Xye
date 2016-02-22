@@ -23,7 +23,7 @@ public class Trade
 
 	/**
 	 * Creates the data type.
-	 * @param stockKey The three digit identifier.
+	 * @param stockKey The three-four digit identifier.
 	 * @param date The date of trade.
 	 * @param open The open value.
 	 * @param high The high value.
