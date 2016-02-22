@@ -25,6 +25,7 @@ public class Damien
 		
 		System.out.println("Starting Damien's Initialization phase.");
 		
+		@SuppressWarnings("unused")
 		FileHandler fileHandler = new FileHandler();
 		
 		UrlHandler urlHandler = new UrlHandler();
@@ -33,9 +34,7 @@ public class Damien
 		
 		urlHandler.getAndProcessFromUrl("MSFT");
 		
-		Stock stock = fileLoader.getStockFromFile("Data\\Stocks\\MSFT", "MSFT All.csv", "MSFT");
-		
-		fileHandler.createFileFromStock(stock, "Test\\File", "test.csv");
+		fileLoader.getStockFromFile("Data\\Stocks\\MSFT", "MSFT.STOCK", "MSFT");
 		
 		System.out.println("Ending Damien's Initialization phase.");
 		
