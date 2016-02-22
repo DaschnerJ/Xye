@@ -4,7 +4,6 @@ import io.github.daschner.Xye.data.types.Date;
 import io.github.daschner.Xye.data.types.Month;
 import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.data.types.Trade;
-import io.github.poisonedporkchop.Xye.data.functions.DataManager;
 
 import java.io.BufferedReader;
 import java.io.File;
