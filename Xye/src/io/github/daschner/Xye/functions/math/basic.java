@@ -3,7 +3,9 @@ package io.github.daschner.Xye.functions.math;
 import javax.script.ScriptException;
 
 import io.github.daschner.Xye.devs.Daschner;
-
+/**
+ * @author Mr. Daschner
+ */
 public class basic 
 {
 	
