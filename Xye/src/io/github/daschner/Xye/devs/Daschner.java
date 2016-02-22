@@ -6,11 +6,15 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
 import io.github.daschner.Xye.data.types.Trade;
-
+/**
+ * @author Mr. Daschner
+ */
 public class Daschner 
 {
+	
 	public static ScriptEngineManager scriptEngineManager;
 	public static ScriptEngine scriptEngine;
+	
 	public static void preInitialization()
 	{
 		
