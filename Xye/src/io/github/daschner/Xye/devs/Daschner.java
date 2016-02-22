@@ -1,7 +1,11 @@
 package io.github.daschner.Xye.devs;
 
+import java.util.ArrayList;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+
+import io.github.daschner.Xye.data.types.Trade;
 
 public class Daschner 
 {
@@ -42,6 +46,20 @@ public class Daschner
 		System.out.println("Mr. Daschner's initialization testing has started.");
 		
 		System.out.println("Mr. Daschner's initialization testing has completed.");
+	}
+	
+	public static ArrayList<Trade> reverseList(ArrayList<Trade> tradeList)
+	{
+		ArrayList<Trade> reversed = new ArrayList<Trade>();
+		
+		int length = tradeList.size()-1;
+		for(int i = 0; i < tradeList.size(); i++)
+		{
+			reversed.add(tradeList.get(length));
+			length--;
+		}
+		
+		return reversed;
 	}
 
 }
