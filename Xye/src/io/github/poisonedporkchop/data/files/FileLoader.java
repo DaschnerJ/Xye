@@ -2,6 +2,7 @@ package io.github.poisonedporkchop.data.files;
 
 import io.github.daschner.Xye.data.types.Date;
 import io.github.daschner.Xye.data.types.Month;
+import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.data.types.Trade;
 
 import java.io.BufferedReader;
@@ -123,6 +124,14 @@ public class FileLoader {
 		}
 		
 		return null;
+		
+	}
+	
+	public Stock getStockFromFile(String filePath, String fileName, String stockID) {
+		
+		Stock stock = new Stock(stockID);
+		
+		return stock;
 		
 	}
 	
