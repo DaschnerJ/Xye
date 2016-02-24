@@ -2,8 +2,6 @@ package io.github.poisonedporkchop.Xye.graphics;
 
 import io.github.poisonedporkchop.Xye.data.files.FileHandler;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
