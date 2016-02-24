@@ -170,7 +170,7 @@ public class UrlHandler {
 			
 			new FileHandler().createFolder(path);
 			
-			fos = new FileOutputStream("C:\\Xye\\" + path + "\\" + fileName + ".stock");
+			fos = new FileOutputStream("C:\\Xye\\" + path + "\\" + fileName + ".csv");
 			
 			try {
 				
@@ -180,7 +180,7 @@ public class UrlHandler {
 					
 					fos.close();
 					
-					File file = new File("C:\\Xye\\" + path + "\\" + fileName);
+					File file = new File("C:\\Xye\\" + path + "\\" + fileName + ".csv");
 					
 					if(file.length() == 0) {
 						
@@ -226,7 +226,7 @@ public class UrlHandler {
 		
 		if(validateURL(url)) {
 			
-			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".stock");
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".csv");
 			
 		}
 		else
@@ -236,7 +236,7 @@ public class UrlHandler {
 			
 		}
 		
-		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".csv") ;
+		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".stock") ;
 		
 	}
 	
@@ -255,7 +255,7 @@ public class UrlHandler {
 		
 		if(validateURL(url)) {
 			
-			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".stock");
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv");
 			
 		}
 		else
@@ -265,7 +265,7 @@ public class UrlHandler {
 			
 		}
 		
-		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv") ;
+		handler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".stock") ;
 		
 	}
 	
@@ -287,7 +287,7 @@ public class UrlHandler {
 		
 		if(validateURL(url)) {
 			
-			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + "All" + ".stock");
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName);
 			
 		}
 		else
@@ -297,7 +297,7 @@ public class UrlHandler {
 			
 		}
 		
-		fileHandler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName + " " + "All" + ".csv") ;
+		fileHandler.processTrade("Downloads\\Stocks\\" + stockName, "Data\\Stocks\\" + stockName, stockName);
 		
 	}
 	

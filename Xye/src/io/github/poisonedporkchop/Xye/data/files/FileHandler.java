@@ -25,6 +25,8 @@ public class FileHandler {
 	 * @return Whether or not the conversion was successful.
 	 */
 	
+	//BROKEN
+	
 	public boolean processTrade(String path, String targetPath) {
 
 		FileReader fileReader = null;
@@ -151,13 +153,13 @@ public class FileHandler {
 		
 		this.createFolder(path);
 		
-		File file = new File("C:\\Xye\\" + path + "\\" + fileName);
+		File file = new File("C:\\Xye\\" + path + "\\" + fileName + ".csv");
 		
 		if (file.isFile()) {
 			
 			this.createFolder(targetPath);
 			
-			File newFile = new File("C:\\Xye\\" + targetPath + "\\" + file.getName());
+			File newFile = new File("C:\\Xye\\" + targetPath + "\\" + fileName + ".stock");
 			
 			try {
 				
@@ -215,6 +217,8 @@ public class FileHandler {
 					
 				}
 				
+				return true;
+				
 			} catch (IOException e) {
 				
 				System.out.println("ERROR: A problem has occurred with the file edit!");
@@ -224,6 +228,8 @@ public class FileHandler {
 			}
 			
 		}
+		
+		System.out.println("ERROR: Could not process nonexistant file!");
 		
 		return false;
 		

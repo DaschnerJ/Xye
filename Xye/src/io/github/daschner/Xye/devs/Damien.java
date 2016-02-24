@@ -33,7 +33,7 @@ public class Damien
 		
 		urlHandler.getAndProcessFromUrl("MSFT");
 		
-		fileLoader.getStockFromFile("Data\\Stocks\\MSFT", "MSFT.STOCK", "MSFT");
+		fileLoader.getStockFromFile("Data\\Stocks\\MSFT", "MSFT", "MSFT");
 		
 		System.out.println("Ending Damien's Initialization phase.");
 		
