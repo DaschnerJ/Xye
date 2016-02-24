@@ -172,5 +172,48 @@ public class Date
 		return Integer.parseInt(date);
 		
 	}
+	
+	/**
+	 * Returns a String of the date.
+	 * 
+	 * @return A String of the date in the format:
+	 * "year-month-day"
+	 */
+	
+	public String toString() {
+		
+		String year,month,day = null;
+		
+		year = this.year + "";
+		
+		if(this.month.ordinal() + 1 < 10) {
+			
+			month = 0 + "" + this.month.ordinal() + 1;
+			
+		}
+		else
+		{
+			
+			month = "" + this.month.ordinal() + 1;
+			
+		}
+		
+		if(this.day < 10) {
+			
+			day = 0 + "" + this.day;
+			
+		}
+		else
+		{
+			
+			month = "" + this.day;
+			
+		}
+		
+		String date = year + "-" + month + "-" + day;
+		
+		return date;
+		
+	}
 
 }

@@ -13,6 +13,13 @@ import java.util.List;
 
 public class DataManager {
 	
+	/**
+	 * Takes a list of trades and sorts them by date.
+	 * 
+	 * @param trades - The list to sort.
+	 * @return The sorted list.
+	 */
+	
 	public List<Trade> sortTradesByDate(List<Trade> trades) {
 
 		List<Trade> sorting = new ArrayList<>();

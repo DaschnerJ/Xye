@@ -114,7 +114,7 @@ public class UrlHandler {
 				return true;
 				
 			}
-			else if(website.getResponseCode() == HttpURLConnection.HTTP_OK) {
+			else if(website.getResponseCode() != HttpURLConnection.HTTP_OK) {
 				
 				return false;
 				
@@ -170,7 +170,7 @@ public class UrlHandler {
 			
 			new FileHandler().createFolder(path);
 			
-			fos = new FileOutputStream("C:\\Xye\\" + path + "\\" + fileName);
+			fos = new FileOutputStream("C:\\Xye\\" + path + "\\" + fileName + ".stock");
 			
 			try {
 				
@@ -226,7 +226,7 @@ public class UrlHandler {
 		
 		if(validateURL(url)) {
 			
-			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".csv");
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date1.getMonth().ordinal() + 1) + "-" + date1.getDay() + "-" + date1.getYear() + ".stock");
 			
 		}
 		else
@@ -255,7 +255,7 @@ public class UrlHandler {
 		
 		if(validateURL(url)) {
 			
-			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".csv");
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + (date.getMonth().ordinal() + 1) + "-" + date.getDay() + "-" + date.getYear() + ".stock");
 			
 		}
 		else
@@ -287,7 +287,7 @@ public class UrlHandler {
 		
 		if(validateURL(url)) {
 			
-			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + "All" + ".csv");
+			downloadFileFromURL(url, "Downloads\\Stocks\\" + stockName, stockName + " " + "All" + ".stock");
 			
 		}
 		else
