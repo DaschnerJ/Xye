@@ -1,13 +1,22 @@
 package io.github.daschner.Xye.devs;
 
+import org.lwjgl.opengl.Display;
+
 import io.github.daschner.Xye.data.url.UrlHandler;
 import io.github.poisonedporkchop.Xye.data.files.FileHandler;
 import io.github.poisonedporkchop.Xye.data.files.FileLoader;
+import io.github.poisonedporkchop.Xye.graphics.DisplayHandler;
 
 public class Damien 
 {
 	
-	public static int x;
+	public static FileHandler fileHandler = new FileHandler();
+	
+	public static FileLoader fileLoader = new FileLoader();
+	
+	public static UrlHandler urlHandler = new UrlHandler();
+	
+	public static DisplayHandler displayHandler = new DisplayHandler();
 	
 	//Libraries and APIs
 	public static void preInitialization()
@@ -24,16 +33,11 @@ public class Damien
 		
 		System.out.println("Starting Damien's Initialization phase.");
 		
-		@SuppressWarnings("unused")
-		FileHandler fileHandler = new FileHandler();
-		
-		UrlHandler urlHandler = new UrlHandler();
-		
-		FileLoader fileLoader = new FileLoader();
-		
 		urlHandler.getAndProcessFromUrl("MSFT");
 		
 		fileLoader.getStockFromFile("Data\\Stocks\\MSFT", "MSFT", "MSFT");
+		
+		new Damien().startProgram();
 		
 		System.out.println("Ending Damien's Initialization phase.");
 		
@@ -45,6 +49,34 @@ public class Damien
 		System.out.println("Starting Damien's PostInitialization phase.");
 		
 		System.out.println("Ending Damien's PostInitialization phase.");
+		
+	}
+	
+	public void startProgram() {
+		
+		System.out.println("INFO: Starting program!");
+		
+		displayHandler.create();
+		
+		programLoop();
+		
+	}
+	
+	public void programLoop() {
+		
+		while(!Display.isCloseRequested()) {
+			
+			displayHandler.update();
+			
+		}
+		
+		stopProgram();
+		
+	}
+	
+	public void stopProgram() {
+		
+		displayHandler.close();
 		
 	}
 
