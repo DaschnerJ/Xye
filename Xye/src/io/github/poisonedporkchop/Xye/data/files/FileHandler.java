@@ -367,7 +367,7 @@ public class FileHandler {
 						
 						writer.write(trade.getVolume() + ",");
 						
-						writer.write(trade.adjClose() + "");
+						writer.write(trade.getAdjClose() + "");
 						
 					} catch (IOException e) {
 						
