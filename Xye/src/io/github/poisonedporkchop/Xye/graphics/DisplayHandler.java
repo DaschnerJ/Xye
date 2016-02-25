@@ -48,7 +48,7 @@ public class DisplayHandler {
 		
 		Display.setInitialBackground(0, 0, 0);
 		
-		DisplayMode usedMode = new DisplayMode(600, 400);
+		DisplayMode usedMode = new DisplayMode(900, 600);
 					
 		try {
 			
