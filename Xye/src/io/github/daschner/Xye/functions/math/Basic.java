@@ -1,10 +1,10 @@
 package io.github.daschner.Xye.functions.math;
 
-import javax.script.ScriptException;
-
 import io.github.daschner.Xye.data.types.Date;
 import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.devs.Daschner;
+
+import javax.script.ScriptException;
 /**
  * @author Mr. Daschner
  */

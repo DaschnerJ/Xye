@@ -1,15 +1,15 @@
 package io.github.daschner.Xye.devs;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import org.lwjgl.opengl.Display;
-
 import io.github.daschner.Xye.data.url.UrlHandler;
 import io.github.poisonedporkchop.Xye.data.files.FileHandler;
 import io.github.poisonedporkchop.Xye.data.files.FileLoader;
 import io.github.poisonedporkchop.Xye.graphics.DisplayHandler;
 import io.github.poisonedporkchop.Xye.graphics.gui.GUI;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.lwjgl.opengl.Display;
 
 public class Damien 
 {

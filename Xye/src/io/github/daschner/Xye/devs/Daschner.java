@@ -1,12 +1,12 @@
 package io.github.daschner.Xye.devs;
 
+import io.github.daschner.Xye.data.types.Trade;
+import io.github.daschner.Xye.plugins.XyeClassLoader;
+
 import java.util.ArrayList;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-
-import io.github.daschner.Xye.data.types.Trade;
-import io.github.daschner.Xye.plugins.XyeClassLoader;
 /**
  * @author Mr. Daschner
  */

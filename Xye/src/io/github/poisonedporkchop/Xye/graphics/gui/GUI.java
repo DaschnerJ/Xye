@@ -19,7 +19,7 @@ public class GUI {
 	
 	public GUI(float[] positions) {
 		
-		vao = createVAO(); 
+		vao = createVAO();  
 		
 		DisplayHandler.vaos.add(vao);
 		
