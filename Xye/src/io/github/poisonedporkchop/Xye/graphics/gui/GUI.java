@@ -1,5 +1,8 @@
 package io.github.poisonedporkchop.Xye.graphics.gui;
 
+/**
+ * @author Damien Claessen
+ */
 public class GUI {
 	
 	private int vao, vertexCount;
