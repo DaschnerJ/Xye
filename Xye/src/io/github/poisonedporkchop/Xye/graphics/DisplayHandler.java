@@ -3,6 +3,7 @@ package io.github.poisonedporkchop.Xye.graphics;
 import io.github.poisonedporkchop.Xye.data.files.FileHandler;
 import io.github.poisonedporkchop.Xye.graphics.gui.GUI;
 
+import java.awt.Window;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -59,7 +60,7 @@ public class DisplayHandler {
 		
 		Display.setInitialBackground(0, 0, 0);
 		
-		DisplayMode usedMode = new DisplayMode(900, 600);
+		DisplayMode usedMode = new DisplayMode(Display.getDisplayMode().getWidth(), Display.getDisplayMode().getHeight());
 					
 		try {
 			
