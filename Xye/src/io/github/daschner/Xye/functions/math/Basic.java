@@ -1,7 +1,6 @@
 package io.github.daschner.Xye.functions.math;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import javax.script.ScriptException;
