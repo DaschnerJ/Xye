@@ -15,6 +15,7 @@ public class Daschner
 	
 	public static ScriptEngineManager scriptEngineManager;
 	public static ScriptEngine scriptEngine;
+	public static XyeClassLoader xyeClassLoader;
 	
 	public static void preInitialization()
 	{
@@ -22,7 +23,7 @@ public class Daschner
 		System.out.println("Mr. Daschner's preinitialization has started.");
 		
 		System.out.println("Starting up Xye Plugin Class Loader...");
-		XyeClassLoader xyeClassLoader = new XyeClassLoader();
+		xyeClassLoader = new XyeClassLoader(); 
 		System.out.println("Started successfully.");
 		
 		System.out.println("Starting up java script engine manager...");
