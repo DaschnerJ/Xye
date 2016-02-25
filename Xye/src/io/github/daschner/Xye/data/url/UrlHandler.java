@@ -301,4 +301,73 @@ public class UrlHandler {
 		
 	}
 	
+	/**
+	 * Downloads a file from a URL.
+	 * 
+	 * @param url - The URL to download from.
+	 * @param path - Path in Xye folder to put the new file.
+	 * @param fileName - Name of new file.
+	 * @return Path to the newly downloaded file.
+	 */
+	
+	public String downloadFileFromURL(URL url, String path, String fileName, String fileExtension) {
+		
+		ReadableByteChannel rbc = null;
+		
+		try {
+			
+			rbc = Channels.newChannel(url.openStream());
+			
+		} catch (IOException e1) {
+			
+			System.out.println("ERROR: Byte Channel could not be initialized!");
+			
+		}
+		
+		FileOutputStream fos = null;
+		
+		try {
+			
+			new FileHandler().createFolder(path);
+			
+			fos = new FileOutputStream("C:\\Xye\\" + path + "\\" + fileName + "." + fileExtension);
+			
+			try {
+				
+				fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+				
+				try {
+					
+					fos.close();
+					
+					File file = new File("C:\\Xye\\" + path + "\\" + fileName + "." + fileExtension);
+					
+					if(file.length() == 0) {
+						
+						file.delete();
+						
+					}
+					
+				} catch (IOException e) {
+					
+					System.out.println("ERROR: FileStream could not be closed!");
+					
+				}
+				
+			} catch (IOException e) {
+				
+				System.out.println("ERROR: Transfer of bytes failed!");
+				
+			}
+			
+		} catch (FileNotFoundException e) {
+			
+			System.out.println("ERROR: FileStream could not be created!");
+			
+		}
+		
+		return (path + "\\" + fileName);
+		
+	}
+	
 }

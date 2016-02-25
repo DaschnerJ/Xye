@@ -1,10 +1,13 @@
 package io.github.poisonedporkchop.Xye.graphics;
 
 import io.github.poisonedporkchop.Xye.data.files.FileHandler;
+import io.github.poisonedporkchop.Xye.graphics.gui.GUI;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -13,6 +16,9 @@ import org.lwjgl.opengl.ContextAttribs;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL15;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.PixelFormat;
 import org.newdawn.slick.opengl.ImageIOImageData;
 
@@ -23,6 +29,9 @@ import org.newdawn.slick.opengl.ImageIOImageData;
 public class DisplayHandler {
 	
 	public static int WIDTH,HEIGHT;
+	
+	public static List<Integer> vaos = new ArrayList<Integer>();
+	public static List<Integer> vbos = new ArrayList<Integer>();
 	
 	public void create() {
 		
@@ -82,6 +91,14 @@ public class DisplayHandler {
 		
 	}
 	
+	public void prepare() {
+		
+		GL11.glClearColor(0, 0, 1, 1);
+		
+		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+		
+	}
+	
 	public void update() {
 		
 		Display.sync(120);
@@ -93,6 +110,36 @@ public class DisplayHandler {
 	public void close() {
 		
 		Display.destroy();
+		
+	}
+	
+	public void renderGUI(GUI gui) {
+		
+		GL30.glBindVertexArray(gui.getVAO());
+		
+		GL20.glEnableVertexAttribArray(0);
+		
+		GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, gui.getVertexCount());
+		
+		GL20.glDisableVertexAttribArray(0);
+		
+		GL30.glBindVertexArray(0);
+		
+	}
+	
+	public void cleanUp() {
+		
+		for(int vao : vaos) {
+			
+			GL30.glDeleteVertexArrays(vao);
+			
+		}
+		
+		for(int vbo : vbos) {
+			
+			GL15.glDeleteBuffers(vbo);
+			
+		}
 		
 	}
 
