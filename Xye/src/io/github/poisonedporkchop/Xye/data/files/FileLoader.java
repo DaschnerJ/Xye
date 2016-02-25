@@ -36,7 +36,7 @@ public class FileLoader {
 		
 		fileHandler.createFolder(filePath);
 		
-		File file = new File("C:\\Xye\\" + filePath + "\\" + fileName);
+		File file = new File("C:\\Xye\\" + filePath + "\\" + fileName + ".stock");
 		
 		if (file.isFile()) {
 			
@@ -122,6 +122,10 @@ public class FileLoader {
 			}
 			
 		}
+		
+		System.out.println("ERROR: File invalid!");
+		
+		System.out.println(file.getAbsolutePath());
 		
 		return null;
 		
