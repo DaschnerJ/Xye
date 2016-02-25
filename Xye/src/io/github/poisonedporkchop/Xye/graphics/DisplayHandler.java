@@ -36,6 +36,8 @@ public class DisplayHandler {
 	
 	public void create() {
 		
+		Display.setResizable(true);
+		
 		Display.setTitle("Xye");
 		
 		try {
