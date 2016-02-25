@@ -59,8 +59,8 @@ public class DisplayHandler {
 		ContextAttribs attribs = new ContextAttribs(3,2).withForwardCompatible(true).withProfileCore(true);
 		
 		Display.setInitialBackground(0, 0, 0);
-		
 		DisplayMode usedMode = new DisplayMode(Display.getDisplayMode().getWidth(), Display.getDisplayMode().getHeight());
+		Display.setLocation(-3, 0);
 					
 		try {
 			
