@@ -15,6 +15,7 @@ public class Basic
 	 * @param problem - The problem for the script engine to complete.
 	 * @return The numerical answer to the problem in a double.
 	 * @throws ScriptException If the script cannot be completed.
+	 * @throws ClassNotFoundException 
 	 */
 	
 	public double evaluateString(String problem) throws ScriptException
@@ -23,9 +24,7 @@ public class Basic
 		return (Double) Daschner.scriptEngine.eval(problem);
 		
 	}
-	
-	
-	
+
 	
 
 }
