@@ -6,6 +6,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
 import io.github.daschner.Xye.data.types.Trade;
+import io.github.daschner.Xye.plugins.XyeClassLoader;
 /**
  * @author Mr. Daschner
  */
@@ -19,6 +20,10 @@ public class Daschner
 	{
 		
 		System.out.println("Mr. Daschner's preinitialization has started.");
+		
+		System.out.println("Starting up Xye Plugin Class Loader...");
+		XyeClassLoader xyeClassLoader = new XyeClassLoader();
+		System.out.println("Started successfully.");
 		
 		System.out.println("Starting up java script engine manager...");
 		scriptEngineManager = new ScriptEngineManager();

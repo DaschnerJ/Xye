@@ -6,7 +6,7 @@ import io.github.daschner.Xye.devs.Daschner;
 /**
  * @author Mr. Daschner
  */
-public class basic 
+public class Basic 
 {
 	
 	/**
@@ -23,6 +23,8 @@ public class basic
 		return (Double) Daschner.scriptEngine.eval(problem);
 		
 	}
+	
+	
 	
 	
 
