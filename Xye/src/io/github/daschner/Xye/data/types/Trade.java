@@ -103,7 +103,7 @@ public class Trade
 	 * Returns the adjClose value.
 	 * @return The adjClose value.
 	 */
-	public double adjClose()
+	public double getAdjClose()
 	{
 		return adjClose;
 	}
