@@ -4,6 +4,9 @@ import io.github.daschner.Xye.data.types.Date;
 import io.github.daschner.Xye.data.types.Stock;
 import io.github.daschner.Xye.devs.Daschner;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.script.ScriptException;
 /**
  * @author Mr. Daschner
@@ -391,6 +394,144 @@ public class Basic
 				else {}
 			}
 			return max;	
+		}
+		else
+			return 0;
+	}
+	
+	public long volumeMedian(Stock stock)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			ArrayList<Long> dataSet = new ArrayList<Long>();
+			for(Date date : stock.getDateTable().keySet())
+			{
+				dataSet.add(stock.getDateTable().get(date).getVolume());
+			}
+			Collections.sort(dataSet);
+			long median;
+			if(dataSet.size()%2 == 0)
+			{
+				median = (dataSet.get(dataSet.size()/2) + dataSet.get((dataSet.size()/2)+1))/2;
+				return median;
+			}
+			else
+				return dataSet.get(dataSet.size()/2);
+		}
+		else
+			return 0L;
+	}
+	
+	public double highMedian(Stock stock)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			ArrayList<Double> dataSet = new ArrayList<Double>();
+			for(Date date : stock.getDateTable().keySet())
+			{
+				dataSet.add(stock.getDateTable().get(date).getHigh());
+			}
+			Collections.sort(dataSet);
+			double median;
+			if(dataSet.size()%2 == 0)
+			{
+				median = (dataSet.get(dataSet.size()/2) + dataSet.get((dataSet.size()/2)+1))/2;
+				return median;
+			}
+			else
+				return dataSet.get(dataSet.size()/2);
+		}
+		else
+			return 0;
+	}
+	
+	public double lowMedian(Stock stock)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			ArrayList<Double> dataSet = new ArrayList<Double>();
+			for(Date date : stock.getDateTable().keySet())
+			{
+				dataSet.add(stock.getDateTable().get(date).getLow());
+			}
+			Collections.sort(dataSet);
+			double median;
+			if(dataSet.size()%2 == 0)
+			{
+				median = (dataSet.get(dataSet.size()/2) + dataSet.get((dataSet.size()/2)+1))/2;
+				return median;
+			}
+			else
+				return dataSet.get(dataSet.size()/2);
+		}
+		else
+			return 0;
+	}
+	
+	public double openMedian(Stock stock)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			ArrayList<Double> dataSet = new ArrayList<Double>();
+			for(Date date : stock.getDateTable().keySet())
+			{
+				dataSet.add(stock.getDateTable().get(date).getOpen());
+			}
+			Collections.sort(dataSet);
+			double median;
+			if(dataSet.size()%2 == 0)
+			{
+				median = (dataSet.get(dataSet.size()/2) + dataSet.get((dataSet.size()/2)+1))/2;
+				return median;
+			}
+			else
+				return dataSet.get(dataSet.size()/2);
+		}
+		else
+			return 0;
+	}
+	
+	public double closeMedian(Stock stock)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			ArrayList<Double> dataSet = new ArrayList<Double>();
+			for(Date date : stock.getDateTable().keySet())
+			{
+				dataSet.add(stock.getDateTable().get(date).getClose());
+			}
+			Collections.sort(dataSet);
+			double median;
+			if(dataSet.size()%2 == 0)
+			{
+				median = (dataSet.get(dataSet.size()/2) + dataSet.get((dataSet.size()/2)+1))/2;
+				return median;
+			}
+			else
+				return dataSet.get(dataSet.size()/2);
+		}
+		else
+			return 0;
+	}
+	
+	public double adjCloseMedian(Stock stock)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			ArrayList<Double> dataSet = new ArrayList<Double>();
+			for(Date date : stock.getDateTable().keySet())
+			{
+				dataSet.add(stock.getDateTable().get(date).getAdjClose());
+			}
+			Collections.sort(dataSet);
+			double median;
+			if(dataSet.size()%2 == 0)
+			{
+				median = (dataSet.get(dataSet.size()/2) + dataSet.get((dataSet.size()/2)+1))/2;
+				return median;
+			}
+			else
+				return dataSet.get(dataSet.size()/2);
 		}
 		else
 			return 0;
