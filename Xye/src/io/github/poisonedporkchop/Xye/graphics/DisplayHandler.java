@@ -26,6 +26,8 @@ public class DisplayHandler {
 	
 	public void create() {
 		
+		Display.setTitle("Xye");
+		
 		try {
 			
 			new FileHandler().createFolder("Resources\\Icon");
@@ -77,8 +79,6 @@ public class DisplayHandler {
 		System.out.println("Graphics: " + GL11.glGetString(GL11.GL_VENDOR) + " (" + Display.getVersion() + ")" + " : " + "Display: " + WIDTH + " * " + HEIGHT);
 		
 		System.out.println("Using OpenGL version " + GL11.glGetString(GL11.GL_VERSION) + (" (LWJGL: " + org.lwjgl.Sys.getVersion() + ")"));
-		
-		Display.setTitle("Xye");
 		
 	}
 	
