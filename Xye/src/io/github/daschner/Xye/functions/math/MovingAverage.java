@@ -61,7 +61,7 @@ public class MovingAverage {
 	 * @param Previous Offset in days to calculate the Moving Average of.
 	 * @return Returns the mean over the period of days for Ajusted Closing.
 	 */
-	public double adjCloseMovingAverageN(Stock stock, Integer days, Integer Previous)
+	public double adjCloseMovingAverageN(Stock stock, Integer days, Integer n)
 	{
 		
 		if(!stock.getDateTable().isEmpty())
@@ -78,13 +78,13 @@ public class MovingAverage {
 			
 			int numberOfEntries = dataSet.size();
 			
-			if(numberOfEntries >= days+Previous)
+			if(numberOfEntries >= days+n)
 			{
 				double totalOfEntries = 0;
 				
 				for(int i = 0; i < numberOfEntries; i++)
 				{
-					totalOfEntries = totalOfEntries + dataSet.get(numberOfEntries-1-i-Previous);
+					totalOfEntries = totalOfEntries + dataSet.get(numberOfEntries-1-i-n);
 				}
 
 				return totalOfEntries/days;

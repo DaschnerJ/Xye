@@ -11,93 +11,61 @@ public class Total {
 	}
 	
 	/**
-	 * Calculates the total Volume of a stock.
-	 * @param stock The stock to find the desired total Volume.
-	 * @return Returns the total Volume.
+	 * Calculates the total data type of a stock.
+	 * @param stock The stock to find the desired total data type.
+	 * @param type The data type to find the total of.
+	 * @return Returns the total of data type of a stock.
 	 */
-	public long volumeTotal(Stock stock)
+	public long TotalType(Stock stock, DataType type)
 	{
-		long totalVolume = 0L;
-		for(Date date : stock.getDateTable().keySet())
+		int code = type.getDataCode();
+		long total = 0L;
+		switch(code)
 		{
-			totalVolume = totalVolume + stock.getDateTable().get(date).getVolume();
+		case 0:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = total + stock.getDateTable().get(date).getVolume();
+			}
+			break;
+		case 1:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = (long) (total + stock.getDateTable().get(date).getOpen());
+			}
+			break;
+		case 2:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = (long) (total + stock.getDateTable().get(date).getClose());
+			}
+			break;
+		case 3:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = (long) (total + stock.getDateTable().get(date).getHigh());
+			}
+			break;
+		case 4:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = (long) (total + stock.getDateTable().get(date).getLow());
+			}
+			break;
+		case 5:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = (long) (total + stock.getDateTable().get(date).getAdjClose());
+			}
+			break;
+		default:
+			for(Date date : stock.getDateTable().keySet())
+			{
+				total = total + stock.getDateTable().get(date).getVolume();
+			}
+			break;
 		}
-		return totalVolume;
-	}
-	
-	/**
-	 * Calculates the total Open of a stock.
-	 * @param stock The stock to find the desired total Open.
-	 * @return Returns the total Open.
-	 */
-	public long openTotal(Stock stock)
-	{
-		long totalOpen = 0L;
-		for(Date date : stock.getDateTable().keySet())
-		{
-			totalOpen = totalOpen + (long)stock.getDateTable().get(date).getOpen();
-		}
-		return totalOpen;
-	}
-	
-	/**
-	 * Calculates the total High of a stock.
-	 * @param stock The stock to find the desired total High.
-	 * @return Returns the total High.
-	 */
-	public long highTotal(Stock stock)
-	{
-		long totalHigh = 0L;
-		for(Date date : stock.getDateTable().keySet())
-		{
-			totalHigh = totalHigh + (long)stock.getDateTable().get(date).getHigh();
-		}
-		return totalHigh;
-	}
-	
-	/**
-	 * Calculates the total Low of a stock.
-	 * @param stock The stock to find the desired total Low.
-	 * @return Returns the total Low.
-	 */
-	public long lowTotal(Stock stock)
-	{
-		long totalLow = 0L;
-		for(Date date : stock.getDateTable().keySet())
-		{
-			totalLow = totalLow + (long)stock.getDateTable().get(date).getLow();
-		}
-		return totalLow;
-	}
-	
-	/**
-	 * Calculates the total Closing of a stock.
-	 * @param stock The stock to find the desired total Closing.
-	 * @return Returns the total Closing.
-	 */
-	public long closeTotal(Stock stock)
-	{
-		long totalClose = 0L;
-		for(Date date : stock.getDateTable().keySet())
-		{
-			totalClose = totalClose + (long)stock.getDateTable().get(date).getClose();
-		}
-		return totalClose;
-	}
-	
-	/**
-	 * Calculates the total Adjusted Close of a stock.
-	 * @param stock The stock to find the desired total Adjusted Close.
-	 * @return Returns the total Adjusted Close.
-	 */
-	public long adjCloseTotal(Stock stock)
-	{
-		long totalAdjClose = 0L;
-		for(Date date : stock.getDateTable().keySet())
-		{
-			totalAdjClose = totalAdjClose + (long)stock.getDateTable().get(date).getAdjClose();
-		}
-		return totalAdjClose;
+		return total;
 	}
 
 }

@@ -11,6 +11,105 @@ public class Maximum {
 	}
 	
 	/**
+	 * Calculates the minimum of the data type of a stock.
+	 * @param stock The stock to find the desired minimum of a data type.
+	 * @param type The data type to calculate the minimum of.
+	 * @return Returns the minimum of the selected data type.
+	 */
+	public long MinType(Stock stock, DataType type)
+	{
+		if(!stock.getDateTable().isEmpty())
+		{
+			long max = 0;
+			long current = 0;
+			int code = type.getDataCode();
+			switch(code)
+			{
+			case 0:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getVolume();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			case 1:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getOpen();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			case 2:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getClose();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			case 3:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getHigh();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			case 4:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getLow();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			case 5:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getAdjClose();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			default:
+				for(Date date : stock.getDateTable().keySet())
+				{
+					current = (long)stock.getDateTable().get(date).getVolume();
+					if(max == 0)
+						max = current;
+					else if(max < current)
+						max = current;
+					else {}
+				}
+				break;
+			}
+			return max;	
+		}
+		else
+			return 0L;
+	}
+	
+	/**
 	 * Calculates the maximum Volume of a stock.
 	 * @param stock The stock to find the desired maximum Volume.
 	 * @return Returns the maximum Volume.
